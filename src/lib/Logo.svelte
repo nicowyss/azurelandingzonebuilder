@@ -1,0 +1,1 @@
+<img src="/balz_logo.webp" alt="BALZ Logo"/>
