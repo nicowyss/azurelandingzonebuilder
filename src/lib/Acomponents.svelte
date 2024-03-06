@@ -1,10 +1,22 @@
-<script>
-	import { CpuIcon } from 'svelte-feather-icons';
+<script lang="ts">
+	import { CpuIcon, AirplayIcon } from 'svelte-feather-icons';
+
+	const onDragStart = (event: DragEvent, nodeType: string) => {
+    if (!event.dataTransfer) {
+      return null;
+    }
+
+    event.dataTransfer.setData('application/svelteflow', nodeType);
+    event.dataTransfer.effectAllowed = 'move';
+  };
+
 </script>
 
 <div id="componentsDraggables">Components will be listed here</div>
 <div class="aComponents">
-	<CpuIcon />
+	<div class='managementGroup' on:dragstart={(event) => onDragStart(event, 'input')} draggable={true}>
+		<i> <AirplayIcon /> </i>
+	</div>
 	<CpuIcon />
 	<CpuIcon />
 	<CpuIcon />
@@ -17,9 +29,9 @@
 
 <style>
 	#componentsDraggables {
-		padding: 0.25em;
+		padding: 1em;
 		background-color: blueviolet;
-        color: white;
+		color: white;
 	}
 
 	.aComponents {
