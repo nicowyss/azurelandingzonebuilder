@@ -2,9 +2,9 @@
 	import { nodestatus } from '$lib/stores/NodeStore';
 	import { writable } from 'svelte/store';
 
-
 	import {
 		SvelteFlow,
+		SvelteFlowProvider,
 		Controls,
 		Background,
 		BackgroundVariant,
@@ -30,7 +30,7 @@
 			data: { label: 'Default Node' },
 			position: { x: 0, y: 100 }
 		},
-    {
+		{
 			id: '3',
 			type: 'output',
 			data: { label: 'Output Node' },
@@ -46,7 +46,7 @@
 			source: '1',
 			target: '2'
 		},
-    {
+		{
 			id: '2-3',
 			type: 'smoothstep',
 			source: '2',
@@ -56,28 +56,37 @@
 
 	const snapGrid = [25, 25];
 
+	const DefaultEdgeOptions = {
+		type: 'smoothstep',
+		animated: false,
+		deletable: true
+	};
 </script>
-
 
 <!--
   👇 By default, the Svelte Flow container has a height of 100%.
   This means that the parent container needs a height to render the flow.
   -->
 <div id="nodeCanvas">
+	<SvelteFlowProvider>
 	<SvelteFlow
 		{nodes}
 		{edges}
 		{snapGrid}
+		{DefaultEdgeOptions}
 		fitView
+		colorMode="light"
 		on:nodeclick={(event) => {
 			$nodestatus = event.detail.node;
 			console.log('on node click', event.detail.node);
 		}}
-	>
+		>
 		<Controls />
-		<Background variant={BackgroundVariant.Dots} />
+		<Background variant={BackgroundVariant.Lines} />
 		<MiniMap />
-  	</SvelteFlow>
+	</SvelteFlow>
+</SvelteFlowProvider>
+
 </div>
 
 <style>

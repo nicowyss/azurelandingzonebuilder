@@ -26,6 +26,7 @@
 	"type": "module",
 	"dependencies": {
 		"@xyflow/svelte": "^0.0.36",
+		"html-to-image": "^1.11.11",
 		"svelte-feather-icons": "^4.1.0"
 	}
 }
