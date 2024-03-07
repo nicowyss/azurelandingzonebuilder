@@ -7,10 +7,10 @@
 
 <div id="topContent">
 	<div>
-		<button class='button'><HomeIcon size="2x" /></button>
+		<a class='button' href='/'><HomeIcon size="2x" /></a>
 	</div>
 	<div>
-		<button class='button'><CodeIcon size="2x" /></button>
+		<a class='button' href='/code'><CodeIcon size="2x" /></a>
 	</div>
 	<div>
 		<button class='button'><DownloadIcon size="2x" /></button>

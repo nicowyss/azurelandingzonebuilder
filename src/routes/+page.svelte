@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { nodestatus } from '$lib/stores/NodeStore';
 	import { writable } from 'svelte/store';
+	import { initialNodes, initialEdges } from '$lib/nodes-and-edges';
+	import CustomNode from '$lib/CustomNode.svelte';
 
 	import {
 		SvelteFlow,
@@ -8,8 +10,9 @@
 		Controls,
 		Background,
 		BackgroundVariant,
-		MiniMap
-
+		MiniMap,
+		type Node,
+		type Edge
 		// @ts-ignore
 	} from '/node_modules/@xyflow/svelte/dist/lib/index.js';
 
@@ -17,43 +20,12 @@
 	import '/node_modules/@xyflow/svelte/dist/style.css';
 
 	// We are using writables for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
-	const nodes = writable([
-		{
-			id: '1',
-			type: 'input',
-			data: { label: 'Input Node' },
-			position: { x: -150, y: 0 }
-		},
-		{
-			id: '2',
-			type: 'default',
-			data: { label: 'Default Node' },
-			position: { x: 0, y: 100 }
-		},
-		{
-			id: '3',
-			type: 'output',
-			data: { label: 'Output Node' },
-			position: { x: 150, y: 200 }
-		}
-	]);
+	const nodes = writable<Node[]>(initialNodes);
+	const edges = writable<Edge[]>(initialEdges);
 
-	// same for edges
-	const edges = writable([
-		{
-			id: '1-2',
-			type: 'smoothstep',
-			source: '1',
-			target: '2'
-		},
-		{
-			id: '2-3',
-			type: 'smoothstep',
-			source: '2',
-			target: '3'
-		}
-	]);
-
+	const nodeTypes = {
+		custom: CustomNode
+	};
 	const snapGrid = [25, 25];
 
 	const DefaultEdgeOptions = {
@@ -69,24 +41,24 @@
   -->
 <div id="nodeCanvas">
 	<SvelteFlowProvider>
-	<SvelteFlow
-		{nodes}
-		{edges}
-		{snapGrid}
-		{DefaultEdgeOptions}
-		fitView
-		colorMode="light"
-		on:nodeclick={(event) => {
-			$nodestatus = event.detail.node;
-			console.log('on node click', event.detail.node);
-		}}
+		<SvelteFlow
+			{nodes}
+			{edges}
+			{nodeTypes}
+			{snapGrid}
+			{DefaultEdgeOptions}
+			fitView
+			colorMode="light"
+			on:nodeclick={(event) => {
+				$nodestatus = event.detail.node;
+				console.log('on node click', event.detail.node);
+			}}
 		>
-		<Controls />
-		<Background variant={BackgroundVariant.Lines} />
-		<MiniMap />
-	</SvelteFlow>
-</SvelteFlowProvider>
-
+			<Controls />
+			<Background variant={BackgroundVariant.Lines} />
+			<MiniMap />
+		</SvelteFlow>
+	</SvelteFlowProvider>
 </div>
 
 <style>
@@ -94,3 +66,5 @@
 		height: 100%;
 	}
 </style>
+
+
