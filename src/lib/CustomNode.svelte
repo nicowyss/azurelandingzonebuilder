@@ -3,17 +3,10 @@
 
 	type $$Props = NodeProps;
 	export let data: $$Props['data'];
-
 </script>
 
 <div>
-	<div>
-		<div>
-			{data.img}
-		</div>
-		<div>
-			<div>{data.resourceName}</div>
-			<div class="text-gray-500">{data.resourceCustomName}</div>
-		</div>
-	</div>
+	<img src={data.img} alt={data.resourceName} width="20" height="20" />
+	<div>{data.resourceName}</div>
+	<div class="text-gray-500">{data.resourceCustomName}</div>
 </div>

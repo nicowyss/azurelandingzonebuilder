@@ -4,21 +4,21 @@ export const initialNodes: Node[] = [
     {
         id: '1',
         type: 'custom',
-        data: { img: ':)', resourceName: 'ManagementGroup', resourceCustomName: 'mgmt-xxx' },
+        data: { img: 'https://code.benco.io/icon-collection/azure-icons/Management-Groups.svg', resourceName: 'ManagementGroup', resourceCustomName: 'mgmt-xxx' },
         style: 'border: 1px solid #777; padding: 10px;',
         position: { x: -150, y: 0 }
     },
     {
         id: '2',
         type: 'custom',
-        data: { img: ':)', resourceName: 'Subscription', resourceCustomName: 'sub-xxx' },
+        data: { img: 'https://code.benco.io/icon-collection/azure-icons/Subscriptions.svg', resourceName: 'Subscription', resourceCustomName: 'sub-xxx' },
         style: 'border: 1px solid #777; padding: 10px;',
         position: { x: 0, y: 100 }
     },
     {
         id: '3',
         type: 'custom',
-        data: { img: ':)', resourceName: 'ResourceGroup', resourceCustomName: 'rg-xxx' },
+        data: { img: 'https://code.benco.io/icon-collection/azure-icons/Resource-Groups.svg', resourceName: 'ResourceGroup', resourceCustomName: 'rg-xxx' },
         style: 'border: 1px solid #777; padding: 10px;',
         position: { x: 150, y: 200 }
     },
