@@ -1,32 +1,70 @@
 <script lang="ts">
+	const onDragStart = (event: DragEvent, nodeType: string) => {
+		if (!event.dataTransfer) {
+			return null;
+		}
 
+		event.dataTransfer.setData('application/svelteflow', nodeType);
+		event.dataTransfer.effectAllowed = 'move';
+	};
 </script>
 
 <div id="componentsDraggables">Components will be listed here</div>
 <div class="aComponents">
 	<div>
 		MGMT Group
-		<img class='azicon' src="https://code.benco.io/icon-collection/azure-icons/Management-Groups.svg" alt='test'/>
+		<img
+			on:dragstart={(event) => onDragStart(event, 'custom')}
+			draggable={true}
+			class="azicon"
+			src="https://code.benco.io/icon-collection/azure-icons/Management-Groups.svg"
+			alt="test"
+		/>
 	</div>
 	<div>
 		Subscription
-		<img class='azicon' src="https://code.benco.io/icon-collection/azure-icons/Subscriptions.svg" alt='test'/>
+		<img
+			on:dragstart={(event) => onDragStart(event, 'custom')}
+			class="azicon"
+			src="https://code.benco.io/icon-collection/azure-icons/Subscriptions.svg"
+			alt="test"
+		/>
 	</div>
 	<div>
 		Resource Group
-		<img class='azicon' src="https://code.benco.io/icon-collection/azure-icons/Resource-Groups.svg" alt='test'/>
+		<img
+			on:dragstart={(event) => onDragStart(event, 'custom')}
+			class="azicon"
+			src="https://code.benco.io/icon-collection/azure-icons/Resource-Groups.svg"
+			alt="test"
+		/>
 	</div>
 	<div>
 		Resource Graph Explorer
-		<img class='azicon' src="https://code.benco.io/icon-collection/azure-icons/Resource-Graph-Explorer.svg" alt='test'/>
+		<img
+			on:dragstart={(event) => onDragStart(event, 'input')}
+			class="azicon"
+			src="https://code.benco.io/icon-collection/azure-icons/Resource-Graph-Explorer.svg"
+			alt="test"
+		/>
 	</div>
 	<div>
 		Resource Linked
-		<img class='azicon' src="https://code.benco.io/icon-collection/azure-icons/Resource-Linked.svg" alt='test'/>
+		<img
+			on:dragstart={(event) => onDragStart(event, 'default')}
+			class="azicon"
+			src="https://code.benco.io/icon-collection/azure-icons/Resource-Linked.svg"
+			alt="test"
+		/>
 	</div>
 	<div>
 		Event Grid Subscriptions
-		<img class='azicon' src="https://code.benco.io/icon-collection/azure-icons/Event-Grid-Subscriptions.svg" alt='test'/>
+		<img
+			on:dragstart={(event) => onDragStart(event, 'output')}
+			class="azicon"
+			src="https://code.benco.io/icon-collection/azure-icons/Event-Grid-Subscriptions.svg"
+			alt="test"
+		/>
 	</div>
 </div>
 
@@ -46,7 +84,7 @@
 		place-items: center;
 	}
 	.azicon {
-    width: "5";
-    height: "5"; 
+		width: '5';
+		height: '5';
 	}
 </style>

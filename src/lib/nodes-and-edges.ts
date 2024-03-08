@@ -5,21 +5,21 @@ export const initialNodes: Node[] = [
         id: '1',
         type: 'custom',
         data: { img: 'https://code.benco.io/icon-collection/azure-icons/Management-Groups.svg', resourceName: 'ManagementGroup', resourceCustomName: 'mgmt-xxx' },
-        style: 'border: 1px solid #777; padding: 10px;',
+        style: 'background: #fff; border: 1px solid black; border-radius: 15px; font-size: 12px;',
         position: { x: -150, y: 0 }
     },
     {
         id: '2',
         type: 'custom',
         data: { img: 'https://code.benco.io/icon-collection/azure-icons/Subscriptions.svg', resourceName: 'Subscription', resourceCustomName: 'sub-xxx' },
-        style: 'border: 1px solid #777; padding: 10px;',
+        style: 'background: #fff; border: 1px solid black; border-radius: 15px; font-size: 12px;',
         position: { x: 0, y: 100 }
     },
     {
         id: '3',
         type: 'custom',
         data: { img: 'https://code.benco.io/icon-collection/azure-icons/Resource-Groups.svg', resourceName: 'ResourceGroup', resourceCustomName: 'rg-xxx' },
-        style: 'border: 1px solid #777; padding: 10px;',
+        style: 'background: #fff; border: 1px solid black; border-radius: 15px; font-size: 12px;',
         position: { x: 150, y: 200 }
     },
     {
@@ -49,6 +49,7 @@ export const initialEdges: Edge[] = [
         style: 'stroke: #777;',
         source: '1',
         target: '2',
+        targetHandle: 'bottom'
     },
     {
         id: '2-3',

@@ -33,6 +33,34 @@
 		animated: false,
 		deletable: true
 	};
+	const onDragOver = (event: DragEvent) => {
+		event.preventDefault();
+
+		if (event.dataTransfer) {
+			event.dataTransfer.dropEffect = 'move';
+		}
+	};
+
+	const onDrop = (event: DragEvent) => {
+		event.preventDefault();
+
+		if (!event.dataTransfer) {
+			return null;
+		}
+
+		const type = event.dataTransfer.getData('application/svelteflow');
+
+		const newNode = {
+			id: `${Math.random()}`,
+			type,
+			position: { x: 150, y: 200 },
+			data: { label: `${type} node` },
+			origin: [0.5, 0.0]
+		} satisfies Node;
+
+		$nodes.push(newNode);
+		$nodes = $nodes;
+	};
 </script>
 
 <!--
@@ -49,6 +77,8 @@
 			{DefaultEdgeOptions}
 			fitView
 			colorMode="light"
+			on:dragover={onDragOver} 
+			on:drop={onDrop}
 			on:nodeclick={(event) => {
 				$nodestatus = event.detail.node;
 				console.log('on node click', event.detail.node);
@@ -66,5 +96,3 @@
 		height: 100%;
 	}
 </style>
-
-
