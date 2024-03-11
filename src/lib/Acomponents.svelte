@@ -1,4 +1,6 @@
 <script lang="ts">
+	import CustomNode from "./CustomNode.svelte";
+
 	const onDragStart = (event: DragEvent, nodeType: string) => {
 		if (!event.dataTransfer) {
 			return null;
@@ -14,7 +16,7 @@
 	<div>
 		MGMT Group
 		<img
-			on:dragstart={(event) => onDragStart(event, 'custom')}
+			on:dragstart={(event) => onDragStart(event, "ManagementGroup")}
 			draggable={true}
 			class="azicon"
 			src="https://code.benco.io/icon-collection/azure-icons/Management-Groups.svg"

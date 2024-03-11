@@ -1,13 +1,18 @@
 import type { Node, Edge } from '@xyflow/svelte';
+import { ManagementGroup } from '$lib/azure-resources/ManagementGroup';
 
 export const initialNodes: Node[] = [
-    {
-        id: '1',
-        type: 'custom',
-        data: { img: 'https://code.benco.io/icon-collection/azure-icons/Management-Groups.svg', resourceName: 'ManagementGroup', resourceCustomName: 'mgmt-xxx' },
-        style: 'background: #fff; border: 1px solid black; border-radius: 15px; font-size: 12px;',
-        position: { x: -150, y: 0 }
-    },
+
+
+    new ManagementGroup(),
+
+    // {
+    //     id: '1',
+    //     type: 'custom',
+    //     data: { img: 'https://code.benco.io/icon-collection/azure-icons/Management-Groups.svg', resourceName: 'ManagementGroup', resourceCustomName: 'mgmt-xxx' },
+    //     style: 'background: #fff; border: 1px solid black; border-radius: 15px; font-size: 12px;',
+    //     position: { x: -150, y: 0 }
+    // },
     {
         id: '2',
         type: 'custom',
@@ -27,19 +32,19 @@ export const initialNodes: Node[] = [
         type: 'input',
         data: { label: 'An input node' },
         position: { x: 100, y: 0 },
-      },
-      {
+    },
+    {
         id: '5',
         type: 'default',
         data: { label: 'An default node' },
         position: { x: 150, y: 100 },
-      },
-      {
+    },
+    {
         id: '6',
         type: 'output',
         data: { label: 'An output node' },
         position: { x: 300, y: 200 },
-      }
+    }
 ];
 
 export const initialEdges: Edge[] = [

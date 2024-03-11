@@ -10,7 +10,7 @@
 		<a class='button' href='/'><HomeIcon size="2x" /></a>
 	</div>
 	<div>
-		<a class='button' href='/code'><CodeIcon size="2x" /></a>
+		<a class='button' href='/codeview'><CodeIcon size="2x" /></a>
 	</div>
 	<div>
 		<button class='button'><DownloadIcon size="2x" /></button>

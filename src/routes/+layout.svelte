@@ -1,6 +1,8 @@
 <script>
 	import '../app.css';
 	import '../fonts.css';
+	import '@xyflow/svelte/dist/style.css';
+	import '../nodes.css';
 	import Logo from '$lib/Logo.svelte';
 	import Top from '$lib/Top.svelte';
 	import Nav from '$lib/Nav.svelte';

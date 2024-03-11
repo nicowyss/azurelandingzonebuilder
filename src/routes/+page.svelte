@@ -3,6 +3,7 @@
 	import { writable } from 'svelte/store';
 	import { initialNodes, initialEdges } from '$lib/nodes-and-edges';
 	import CustomNode from '$lib/CustomNode.svelte';
+	import { setCustomNodeData } from '$lib/functions';
 
 	import {
 		SvelteFlow,
@@ -15,9 +16,7 @@
 		type Edge
 		// @ts-ignore
 	} from '/node_modules/@xyflow/svelte/dist/lib/index.js';
-
-	// 👇 this is important! You need to import the styles for Svelte Flow to work
-	import '/node_modules/@xyflow/svelte/dist/style.css';
+	import { ManagementGroup } from '$lib/azure-resources/ManagementGroup';
 
 	// We are using writables for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
 	const nodes = writable<Node[]>(initialNodes);
@@ -43,20 +42,33 @@
 
 	const onDrop = (event: DragEvent) => {
 		event.preventDefault();
+		console.log("THE EVENT", event)
 
 		if (!event.dataTransfer) {
 			return null;
 		}
 
 		const type = event.dataTransfer.getData('application/svelteflow');
+		console.log(type)
 
-		const newNode = {
-			id: `${Math.random()}`,
-			type,
-			position: { x: 150, y: 200 },
-			data: { label: `${type} node` },
-			origin: [0.5, 0.0]
-		} satisfies Node;
+
+		  const newNode = {
+		  	id: `${Math.random()}`,
+		  	type,
+		  	position: { x: 150, y: 200 },
+		  	data: { label: `${type} node` },
+		  	origin: [0.5, 0.0]
+		  } satisfies Node;
+
+		//const newNode = new ManagementGroup(); this is no Node or Custom Node yet TODO
+
+		// setCustomNodeData(newNode, {
+		// 	id: 'sdfijsdifj',
+		// 	name: 'SomeNode',
+		// 	coordinates: [23, 44],
+		// 	isActive: true,
+		// 	canConnect: false
+		// });
 
 		$nodes.push(newNode);
 		$nodes = $nodes;
@@ -77,7 +89,7 @@
 			{DefaultEdgeOptions}
 			fitView
 			colorMode="light"
-			on:dragover={onDragOver} 
+			on:dragover={onDragOver}
 			on:drop={onDrop}
 			on:nodeclick={(event) => {
 				$nodestatus = event.detail.node;
