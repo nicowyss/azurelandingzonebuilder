@@ -27,6 +27,7 @@
 	"dependencies": {
 		"@xyflow/svelte": "^0.0.36",
 		"html-to-image": "^1.11.11",
+		"monaco-editor": "^0.47.0",
 		"svelte-feather-icons": "^4.1.0"
 	}
 }

@@ -4,6 +4,8 @@ export class ManagementGroup {
 
     constructor(
         public id: string = String(Math.random()),
+        public type: string = "ManagementGroup",
+        public label: string = "test",
         public name: string = "ManagementGroup",
         public coordinates: [number, number] = [23, 34],
         public isActive: boolean = true,

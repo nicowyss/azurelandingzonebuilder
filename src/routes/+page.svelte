@@ -54,13 +54,14 @@
 
 		  const newNode = {
 		  	id: `${Math.random()}`,
-		  	type,
+		  	type: `${type}`,
 		  	position: { x: 150, y: 200 },
-		  	data: { label: `${type} node` },
+		  	data: `${type}`,
 		  	origin: [0.5, 0.0]
 		  } satisfies Node;
 
-		//const newNode = new ManagementGroup(); this is no Node or Custom Node yet TODO
+		//const newNode = new ManagementGroup(); 
+		//this is no Node or Custom Node yet TODO
 
 		// setCustomNodeData(newNode, {
 		// 	id: 'sdfijsdifj',

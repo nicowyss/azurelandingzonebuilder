@@ -15,7 +15,7 @@ export const initialNodes: Node[] = [
     // },
     {
         id: '2',
-        type: 'custom',
+        type: 'testsub',
         data: { img: 'https://code.benco.io/icon-collection/azure-icons/Subscriptions.svg', resourceName: 'Subscription', resourceCustomName: 'sub-xxx' },
         style: 'background: #fff; border: 1px solid black; border-radius: 15px; font-size: 12px;',
         position: { x: 0, y: 100 }
